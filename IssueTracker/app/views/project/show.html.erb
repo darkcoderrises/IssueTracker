@@ -1,5 +1,43 @@
-HI<br>
-<br>
-<%= @project.name %><br>
+<div class="jumbotron">
+  <h2>
+    <%= @project.name %>
+  </h2>
+  Owner: <%= @project.user.first_name %> <%= @project.user.last_name %><br>
+</div>
 <%= @project.description %><br>
-<%= @project.user %><br>
+
+<%= link_to 'Edit', "/project/"+@project.id.to_s+"/edit" %> |
+<%= link_to 'Back', project_path %>
+
+<%= link_to "New Issue", project_id_path(@project) %>
+
+<h3>Issues:-</h3>
+
+<div style = "border:1px solid black; margin:1px;">
+  Open Issues:
+  <% @issues.each do |issue| %>
+    <% if issue.open==false %>
+    <div style = "border:1px solid black; margin:1px;">
+      <h4><%= issue.heading %></h4>
+      <p><%= issue.description %></p>
+      <p><%= issue.status %></p>
+      <b> Open </b>
+      <%= link_to "Look Into It", issue_path(issue) %>
+    </div>
+    <% end %>
+  <% end %>
+
+  <br>
+  Closed Issues:
+  <% @issues.each do |issue| %>
+    <% if issue.open %>
+    <div style = "border:1px solid black; margin:1px;">
+      <h4><%= issue.heading %></h4>
+      <p><%= issue.description %></p>
+      <p><%= issue.status %></p>
+      <b>Closed</b>
+      <%= link_to "Look Into It", issue_path(issue) %>
+    </div>
+    <% end %>
+  <% end %>
+</div>

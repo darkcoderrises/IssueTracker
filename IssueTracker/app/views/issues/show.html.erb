@@ -1,4 +1,10 @@
 <p id="notice"><%= notice %></p>
 
 <%= link_to 'Edit', edit_issue_path(@issue) %> |
-<%= link_to 'Back', issues_path %>
+<%= link_to 'Back', id_path(Project.find(@issue.project_id)) %>
+<%= link_to 'Destroy', @issue, method: :delete, data: { confirm: 'Are you sure?' } %>
+
+
+<%= link_to 'New Comment', issue_id_path(@issue) %>
+<h2><%= @issue.heading %></h2>
+<p><%= @issue.description %></p>

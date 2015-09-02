@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :comments
   resources :issues
   root 'project#index'
 
@@ -7,12 +8,19 @@ Rails.application.routes.draw do
 
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
-  delete '/logout' => 'sessions#destroy'
+  get '/logout' => 'sessions#destroy'
 
   get '/project' => 'project#index'
   get '/project/new' => 'project#new'
-  get '/project/:id' => 'project#show', as: :id
   post '/project/new' => 'project#create'
+  get '/project/:id/edit' => 'project#edit'
+  get '/project/:id' => 'project#show', as: :id
+
+  get '/project/:id/issue/new' => 'issues#new'
+  post '/project/:id/issue/new' => 'issues#create', as: :project_id
+
+  get 'issue/:id/comment/new' => 'comments#new'
+  post 'issue/:id/comment/new' => 'comments#create', as: :issue_id
 
 
   # The priority is based upon order of creation: first created -> highest priority.

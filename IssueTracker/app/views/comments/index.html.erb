@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Comments</h1>
+
+<script>
+  document.getElementById("comment").setAttribute("class","active");
+</script>
+
+
+<br /><br />
+
+
+    <div style="border:1px solid black; padding:1em;">
+    <% @comments.each do |comment| %>
+      <div style="border:1px solid black; margin:1px;">
+        <h3> <%= link_to Issue.find(comment.issue_id).heading, issue_path(Issue.find(comment.issue_id)) %> </h3>
+        <p>
+           <%= comment.comment %>
+         </p>
+        <%= link_to 'Show', comment %>
+        <%= link_to 'Edit', edit_comment_path(comment) %>
+        <%= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' } %>
+      </div>
+    <% end %>
+  </div>

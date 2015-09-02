@@ -2,26 +2,54 @@ class ProjectController < ApplicationController
   before_action :require_user, only: [:index, :new, :show, :create]
 
   def index
-    @projects = Project.all
+    @user = User.find(session[:user_id])
+    @projects = @user.projects
   end
 
   def new
     @project = Project.new
   end
 
+  def edit
+    @project = Project.find(params[:id])
+  end
+
   def show
       @project = Project.find(params[:id])
-      @user = User.find(session[:user_id])
+      @user = User.find(@project.user_id)
+      @issues = @project.issues
   end
 
   def create
     @project = Project.new(project_params)
     @user = User.find(session[:user_id])
+    @user.projects << @project
     if @project.save
-      @user.projects << @project
       redirect_to '/'
     else
       redirect_to '/project/create'
+    end
+  end
+
+  def update
+    respond_to do |format|
+      if @project.update(issue_params)
+        format.html { redirect_to @project, notice: 'Project was successfully updated.' }
+        format.json { render :show, status: :ok, location: @project }
+      else
+        format.html { render :edit }
+        format.json { render json: @project.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  # DELETE /issues/1
+  # DELETE /issues/1.json
+  def destroy
+    @issue.destroy
+    respond_to do |format|
+      format.html { redirect_to issues_url, notice: 'Project was successfully destroyed.' }
+      format.json { head :no_content }
     end
   end
 

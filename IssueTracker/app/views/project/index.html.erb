@@ -1,5 +1,24 @@
+
+<div class="jumbotron">
+<h1><%= @user.first_name %> <%= @user.last_name %></h1>
+</div>
+<%= link_to "New Project", project_new_path() %>
+
+<script>
+  document.getElementById("project").setAttribute("class","active");
+</script>
+
+
+<h2>Your Projects</h2>
+
+<div style="border:1px solid black; padding:1em">
 <% @projects.each do |p| %>
-  <%= p.name %><br>
-  <%= p.description %><br>
-  <%= p.user %><br>
+  <div style="border:1px solid black; margin:1px">
+      <h3 class="bg-primary" >
+        <%= p.name %>
+      </h3>
+    <%= p.description %><br>
+    <%= link_to "See More", id_path(p) %>
+  </div>
 <% end %>
+</div>

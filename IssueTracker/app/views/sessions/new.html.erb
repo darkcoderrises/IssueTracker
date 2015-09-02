@@ -3,3 +3,9 @@
   <%= f.password_field :password, :placeholder => "Password" %>
   <%= f.submit "Log in", class: "btn-submit" %>
 <% end %>
+
+<script>
+  document.getElementById("log").setAttribute("class","active");
+</script>
+
+<%= link_to "New Here Sign Up", signup_path %>

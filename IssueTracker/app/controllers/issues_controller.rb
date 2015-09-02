@@ -27,8 +27,12 @@ class IssuesController < ApplicationController
     @issue = Issue.new(issue_params)
 
     respond_to do |format|
+
+      @project = Project.find(params[:id])
+      @project.issues << @issue
       if @issue.save
         format.html { redirect_to @issue, notice: 'Issue was successfully created.' }
+
         format.json { render :show, status: :created, location: @issue }
       else
         format.html { render :new }
@@ -69,6 +73,6 @@ class IssuesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def issue_params
-      params[:issue]
+      params.require(:issue).permit(:heading, :description, :status, :open)
     end
 end

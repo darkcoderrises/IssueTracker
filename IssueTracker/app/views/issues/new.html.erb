@@ -1,5 +1,10 @@
 <h1>New Issue</h1>
 
-<%= render 'form' %>
 
-<%= link_to 'Back', issues_path %>
+<%= form_for(:issue) do |f| %>
+  <%= f.text_field :heading, :placeholder => "Name" %>
+  <%= f.text_field :description, :placeholder => "Description" %>
+  <%= f.text_field :status, :placeholder => "Status" %>
+  <%= f.check_box :open, :placeholder => "Open/Closed"%>
+  <%= f.submit "Create New", class: "btn-submit" %>
+<% end %>
