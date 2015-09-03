@@ -2,8 +2,9 @@ class ProjectController < ApplicationController
   before_action :require_user, only: [:index, :new, :show, :create]
 
   def index
-    @user = User.find(session[:user_id])
-    @projects = @user.projects
+    @user = ProjectOwner.find(session[:user_id])
+    @use1 = ProjectsUser.find(session[:user_id])
+    @projects = @use1.projects
   end
 
   def new
@@ -16,14 +17,14 @@ class ProjectController < ApplicationController
 
   def show
       @project = Project.find(params[:id])
-      @user = User.find(@project.user_id)
+      @user = User.find(@project.project_owner_id)
       @issues = @project.issues
   end
 
   def create
     @project = Project.new(project_params)
     @user = User.find(session[:user_id])
-    @user.projects << @project
+    @project.project_owner_id = session[:user_id]
     if @project.save
       redirect_to '/'
     else

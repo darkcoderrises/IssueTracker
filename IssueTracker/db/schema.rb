@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150902070130) do
+ActiveRecord::Schema.define(version: 20150903002639) do
 
   create_table "comments", force: :cascade do |t|
     t.string   "comment"
@@ -30,12 +30,30 @@ ActiveRecord::Schema.define(version: 20150902070130) do
     t.datetime "updated_at",  null: false
   end
 
+  create_table "project_owners", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "project_users_projects", id: false, force: :cascade do |t|
+    t.integer "projects_user_id"
+    t.integer "project_id"
+  end
+
+  add_index "project_users_projects", ["project_id"], name: "index_project_users_projects_on_project_id"
+  add_index "project_users_projects", ["projects_user_id"], name: "index_project_users_projects_on_projects_user_id"
+
   create_table "projects", force: :cascade do |t|
     t.string   "name"
     t.string   "description"
-    t.integer  "user_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.integer  "project_owner_id"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
+  create_table "projects_users", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
