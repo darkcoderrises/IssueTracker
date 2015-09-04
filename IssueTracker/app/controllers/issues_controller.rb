@@ -21,6 +21,39 @@ class IssuesController < ApplicationController
   def edit
   end
 
+  def assign
+    @issue = Issue.find(params[:id])
+    @project = @issue.project
+
+    if @issue.assign
+      @issue.assign.destroy
+    end
+    Assign.create(user_id: params[:uid], issue_id: params[:id])
+    redirect_to "/issues/#{@issue.id}"
+  end
+
+  def close
+    @issue = Issue.find(params[:id])
+    @project = @issue.Project
+
+    if !@project.private || @project.user.id == session[:user_id]
+      @issue.update(open: true)
+    end
+
+    redirect_to "/issues/#{@issue.id}"
+  end
+
+  def remtag
+    @tag = Tag.find(params[:tid])
+    @issue = @tag.issue
+    @project = @issue.project
+
+    if !@project.private || @project.user.id == session[:user_id]
+      @tag.destroy
+    end
+    redirect_to "/issues/#{params[:id]}"
+  end
+
   def voteadd
     @issue = Issue.find(params[:id])
     @user = User.find(session[:user_id])
@@ -50,7 +83,6 @@ class IssuesController < ApplicationController
     @issue = Issue.new(issue_params)
 
     respond_to do |format|
-
       @project = Project.find(params[:id])
       @project.issues << @issue
       if @issue.save
@@ -96,6 +128,6 @@ class IssuesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def issue_params
-      params.require(:issue).permit(:heading, :description, :status, :open)
+      params.require(:issue).permit(:heading, :description, :status, :open, :dupl)
     end
 end

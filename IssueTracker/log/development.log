@@ -18408,3 +18408,296 @@ Migrating to CreateTags (20150904111250)
   [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20150904111250"]]
   [1m[35m (142.8ms)[0m  commit transaction
   [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mIssue Load (0.3ms)[0m  [1mSELECT  "issues".* FROM "issues" WHERE "issues"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[36mIssue Load (0.2ms)[0m  [1mSELECT  "issues".* FROM "issues" WHERE "issues"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Migrating to CreateTags (20150904111250)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  DROP TABLE "tags"
+  [1m[36mSQL (0.3ms)[0m  [1mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = ?[0m  [["version", "20150904111250"]]
+  [1m[35m (165.8ms)[0m  commit transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Migrating to CreateAssigns (20150904111007)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  DROP TABLE "assigns"
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = ?[0m  [["version", "20150904111007"]]
+  [1m[35m (139.1ms)[0m  commit transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Migrating to CreateVotes (20150904030142)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  DROP TABLE "votes"
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = ?[0m  [["version", "20150904030142"]]
+  [1m[35m (145.8ms)[0m  commit transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Migrating to CreateMentions (20150904025718)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  DROP TABLE "mentions"
+  [1m[36mSQL (0.6ms)[0m  [1mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = ?[0m  [["version", "20150904025718"]]
+  [1m[35m (174.6ms)[0m  commit transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.3ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Migrating to CreateWorkings (20150903230930)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  DROP TABLE "workings"
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = ?[0m  [["version", "20150903230930"]]
+  [1m[35m (145.3ms)[0m  commit transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Migrating to CreateInvites (20150903213734)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  DROP TABLE "invites"
+  [1m[36mSQL (0.3ms)[0m  [1mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = ?[0m  [["version", "20150903213734"]]
+  [1m[35m (142.5ms)[0m  commit transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Migrating to CreateComments (20150902070130)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  DROP TABLE "comments"
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = ?[0m  [["version", "20150902070130"]]
+  [1m[35m (184.7ms)[0m  commit transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Migrating to CreateIssues (20150901200301)
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.7ms)[0m  DROP TABLE "issues"
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = ?[0m  [["version", "20150901200301"]]
+  [1m[35m (169.1ms)[0m  commit transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateIssues (20150901200301)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.3ms)[0m  [1mCREATE TABLE "issues" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "heading" varchar, "description" varchar, "status" varchar, "open" boolean, "dupl" boolean, "project_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20150901200301"]]
+  [1m[36m (179.6ms)[0m  [1mcommit transaction[0m
+Migrating to CreateComments (20150902070130)
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36m (0.5ms)[0m  [1mCREATE TABLE "comments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "comment" varchar, "issue_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20150902070130"]]
+  [1m[36m (151.3ms)[0m  [1mcommit transaction[0m
+Migrating to CreateInvites (20150903213734)
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36m (1.1ms)[0m  [1mCREATE TABLE "invites" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "project_id" integer, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20150903213734"]]
+  [1m[36m (158.1ms)[0m  [1mcommit transaction[0m
+Migrating to CreateWorkings (20150903230930)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.3ms)[0m  [1mCREATE TABLE "workings" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "project_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20150903230930"]]
+  [1m[36m (154.2ms)[0m  [1mcommit transaction[0m
+Migrating to CreateMentions (20150904025718)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.4ms)[0m  [1mCREATE TABLE "mentions" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "comment_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20150904025718"]]
+  [1m[36m (144.5ms)[0m  [1mcommit transaction[0m
+Migrating to CreateVotes (20150904030142)
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36m (0.3ms)[0m  [1mCREATE TABLE "votes" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "issue_id" integer, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20150904030142"]]
+  [1m[36m (162.8ms)[0m  [1mcommit transaction[0m
+Migrating to CreateAssigns (20150904111007)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.4ms)[0m  [1mCREATE TABLE "assigns" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "issue_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20150904111007"]]
+  [1m[36m (164.2ms)[0m  [1mcommit transaction[0m
+Migrating to CreateTags (20150904111250)
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36m (0.3ms)[0m  [1mCREATE TABLE "tags" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "tag" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20150904111250"]]
+  [1m[36m (152.4ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36mIssue Load (0.6ms)[0m  [1mSELECT  "issues".* FROM "issues" WHERE "issues"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[36m (176.4ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL) [0m
+  [1m[35m (0.1ms)[0m  select sqlite_version(*)
+  [1m[36m (155.0ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Migrating to CreateUsers (20150831140459)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "first_name" varchar, "last_name" varchar, "email" varchar, "password_digest" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20150831140459"]]
+  [1m[35m (128.5ms)[0m  commit transaction
+Migrating to CreateProjects (20150831160230)
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  CREATE TABLE "projects" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "description" varchar, "user_id" integer, "private" boolean, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20150831160230"]]
+  [1m[35m (150.6ms)[0m  commit transaction
+Migrating to CreateIssues (20150901200301)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  CREATE TABLE "issues" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "heading" varchar, "description" varchar, "status" varchar, "open" boolean, "dupl" boolean, "project_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20150901200301"]]
+  [1m[35m (142.7ms)[0m  commit transaction
+Migrating to CreateComments (20150902070130)
+  [1m[36m (0.4ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  CREATE TABLE "comments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "comment" varchar, "issue_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20150902070130"]]
+  [1m[35m (161.5ms)[0m  commit transaction
+Migrating to CreateInvites (20150903213734)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  CREATE TABLE "invites" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "project_id" integer, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20150903213734"]]
+  [1m[35m (176.8ms)[0m  commit transaction
+Migrating to CreateWorkings (20150903230930)
+  [1m[36m (0.4ms)[0m  [1mbegin transaction[0m
+  [1m[35m (1.4ms)[0m  CREATE TABLE "workings" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "project_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20150903230930"]]
+  [1m[35m (294.8ms)[0m  commit transaction
+Migrating to CreateMentions (20150904025718)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  CREATE TABLE "mentions" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "comment_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20150904025718"]]
+  [1m[35m (164.5ms)[0m  commit transaction
+Migrating to CreateVotes (20150904030142)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  CREATE TABLE "votes" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "issue_id" integer, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20150904030142"]]
+  [1m[35m (153.8ms)[0m  commit transaction
+Migrating to CreateAssigns (20150904111007)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  CREATE TABLE "assigns" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "issue_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20150904111007"]]
+  [1m[35m (165.0ms)[0m  commit transaction
+Migrating to CreateTags (20150904111250)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  CREATE TABLE "tags" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "tag" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20150904111250"]]
+  [1m[35m (209.6ms)[0m  commit transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mIssue Load (0.6ms)[0m  [1mSELECT  "issues".* FROM "issues" WHERE "issues"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mComment Load (0.2ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."issue_id" = ?  [["issue_id", 1]]
+  [1m[36mComment Load (0.5ms)[0m  [1mSELECT  "comments".* FROM "comments" WHERE "comments"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mComment Load (0.2ms)[0m  SELECT  "comments".* FROM "comments" WHERE "comments"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mMention Load (0.3ms)[0m  [1mSELECT "mentions".* FROM "mentions" WHERE "mentions"."comment_id" = ?[0m  [["comment_id", 1]]
+  [1m[35mProject Load (0.2ms)[0m  SELECT  "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "workings" ("user_id", "project_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["user_id", 1], ["project_id", 1], ["created_at", "2015-09-04 12:29:09.805270"], ["updated_at", "2015-09-04 12:29:09.805270"]]
+  [1m[36m (151.0ms)[0m  [1mcommit transaction[0m
+  [1m[35mComment Load (0.1ms)[0m  SELECT  "comments".* FROM "comments" WHERE "comments"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mIssue Load (0.2ms)[0m  [1mSELECT  "issues".* FROM "issues" WHERE "issues"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mTag Load (0.7ms)[0m  SELECT "tags".* FROM "tags" WHERE "tags"."issue_id" = ?  [[nil, 1]]
+SQLite3::SQLException: no such column: tags.issue_id: SELECT "tags".* FROM "tags" WHERE "tags"."issue_id" = ?
+  [1m[36mTag Load (0.8ms)[0m  [1mSELECT "tags".* FROM "tags" WHERE "tags"."issue_id" = ?[0m  [[nil, 1]]
+SQLite3::SQLException: no such column: tags.issue_id: SELECT "tags".* FROM "tags" WHERE "tags"."issue_id" = ?
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Migrating to CreateTags (20150904111250)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  DROP TABLE "tags"
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = ?[0m  [["version", "20150904111250"]]
+  [1m[35m (224.9ms)[0m  commit transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateTags (20150904111250)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.3ms)[0m  [1mCREATE TABLE "tags" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "tag" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20150904111250"]]
+  [1m[36m (179.3ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36mIssue Load (0.3ms)[0m  [1mSELECT  "issues".* FROM "issues" WHERE "issues"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mTag Load (0.6ms)[0m  SELECT "tags".* FROM "tags" WHERE "tags"."issue_id" = ?  [[nil, 1]]
+SQLite3::SQLException: no such column: tags.issue_id: SELECT "tags".* FROM "tags" WHERE "tags"."issue_id" = ?
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Migrating to CreateTags (20150904111250)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  DROP TABLE "tags"
+  [1m[36mSQL (0.8ms)[0m  [1mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = ?[0m  [["version", "20150904111250"]]
+  [1m[35m (183.7ms)[0m  commit transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateTags (20150904111250)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.3ms)[0m  [1mCREATE TABLE "tags" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "tag" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20150904111250"]]
+  [1m[36m (196.1ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36mIssue Load (0.2ms)[0m  [1mSELECT  "issues".* FROM "issues" WHERE "issues"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mTag Load (2.2ms)[0m  SELECT "tags".* FROM "tags" WHERE "tags"."issue_id" = ?  [[nil, 1]]
+SQLite3::SQLException: no such column: tags.issue_id: SELECT "tags".* FROM "tags" WHERE "tags"."issue_id" = ?
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Migrating to CreateTags (20150904111250)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  DROP TABLE "tags"
+  [1m[36mSQL (0.3ms)[0m  [1mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = ?[0m  [["version", "20150904111250"]]
+  [1m[35m (173.3ms)[0m  commit transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateTags (20150904111250)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.4ms)[0m  [1mCREATE TABLE "tags" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "tag" varchar, "issue_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20150904111250"]]
+  [1m[36m (144.7ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36mIssue Load (0.2ms)[0m  [1mSELECT  "issues".* FROM "issues" WHERE "issues"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mTag Load (0.7ms)[0m  SELECT "tags".* FROM "tags" WHERE "tags"."issue_id" = ?  [["issue_id", 1]]
+  [1m[36mTag Load (0.2ms)[0m  [1mSELECT  "tags".* FROM "tags" WHERE "tags"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "tags" ("tag", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["tag", "Yo"], ["created_at", "2015-09-04 12:55:57.425035"], ["updated_at", "2015-09-04 12:55:57.425035"]]
+  [1m[35m (150.7ms)[0m  commit transaction
+  [1m[36mTag Load (0.3ms)[0m  [1mSELECT  "tags".* FROM "tags" WHERE "tags"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mIssue Load (0.4ms)[0m  SELECT  "issues".* FROM "issues" WHERE "issues"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1mSELECT "tags".* FROM "tags" WHERE "tags"."issue_id" = ?[0m  [["issue_id", 1]]
+  [1m[35m (0.3ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE "tags" SET "issue_id" = ?, "updated_at" = ? WHERE "tags"."id" = ?[0m  [["issue_id", 1], ["updated_at", "2015-09-04 12:56:13.324924"], ["id", 1]]
+  [1m[35m (173.8ms)[0m  commit transaction
+  [1m[36mIssue Load (0.3ms)[0m  [1mSELECT  "issues".* FROM "issues" WHERE "issues"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mIssue Load (0.3ms)[0m  SELECT  "issues".* FROM "issues" WHERE "issues"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mAssign Load (0.1ms)[0m  [1mSELECT  "assigns".* FROM "assigns" WHERE "assigns"."issue_id" = ? LIMIT 1[0m  [["issue_id", 1]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mAssign Load (0.1ms)[0m  [1mSELECT  "assigns".* FROM "assigns" WHERE "assigns"."issue_id" = ? LIMIT 1[0m  [["issue_id", 1]]
+  [1m[35mAssign Load (0.4ms)[0m  SELECT "assigns".* FROM "assigns" WHERE "assigns"."user_id" = ?  [["user_id", 1]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36mIssue Load (0.3ms)[0m  [1mSELECT  "issues".* FROM "issues" WHERE "issues"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mProject Load (0.5ms)[0m  SELECT  "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mAssign Load (0.1ms)[0m  [1mSELECT  "assigns".* FROM "assigns" WHERE "assigns"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mAssign Load (0.2ms)[0m  SELECT  "assigns".* FROM "assigns" WHERE "assigns"."id" = ? LIMIT 1  [["id", 2]]
+  [1m[36mAssign Load (0.1ms)[0m  [1mSELECT  "assigns".* FROM "assigns" WHERE "assigns"."id" = ? LIMIT 1[0m  [["id", 3]]
+  [1m[35mAssign Load (0.2ms)[0m  SELECT  "assigns".* FROM "assigns" WHERE "assigns"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mAssign Load (0.1ms)[0m  [1mSELECT  "assigns".* FROM "assigns" WHERE "assigns"."id" = ? LIMIT 1[0m  [["id", 5]]
+  [1m[35mAssign Load (0.2ms)[0m  SELECT  "assigns".* FROM "assigns" WHERE "assigns"."id" = ? LIMIT 1  [["id", 6]]
+  [1m[36mIssue Load (0.1ms)[0m  [1mSELECT  "issues".* FROM "issues" WHERE "issues"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mAssign Load (0.3ms)[0m  SELECT  "assigns".* FROM "assigns" WHERE "assigns"."issue_id" = ? LIMIT 1  [["issue_id", 1]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  DELETE FROM "assigns" WHERE "assigns"."id" = ?  [["id", 1]]
+  [1m[36m (172.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+  [1m[35mAssign Load (0.1ms)[0m  SELECT  "assigns".* FROM "assigns" WHERE "assigns"."id" = ? LIMIT 1  [["id", 2]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  DELETE FROM "assigns" WHERE "assigns"."id" = ?  [["id", 2]]
+  [1m[36m (173.3ms)[0m  [1mcommit transaction[0m
+  [1m[35mAssign Load (0.1ms)[0m  SELECT  "assigns".* FROM "assigns" WHERE "assigns"."id" = ? LIMIT 1  [["id", 3]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  DELETE FROM "assigns" WHERE "assigns"."id" = ?  [["id", 3]]
+  [1m[36m (181.0ms)[0m  [1mcommit transaction[0m
+  [1m[35mAssign Load (0.2ms)[0m  SELECT  "assigns".* FROM "assigns" WHERE "assigns"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  DELETE FROM "assigns" WHERE "assigns"."id" = ?  [["id", 4]]
+  [1m[36m (287.6ms)[0m  [1mcommit transaction[0m
+  [1m[35mAssign Load (0.1ms)[0m  SELECT  "assigns".* FROM "assigns" WHERE "assigns"."id" = ? LIMIT 1  [["id", 5]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  DELETE FROM "assigns" WHERE "assigns"."id" = ?  [["id", 5]]
+  [1m[36m (153.0ms)[0m  [1mcommit transaction[0m
+  [1m[35mAssign Load (0.1ms)[0m  SELECT  "assigns".* FROM "assigns" WHERE "assigns"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mAssign Load (0.3ms)[0m  [1mSELECT  "assigns".* FROM "assigns" WHERE "assigns"."id" = ? LIMIT 1[0m  [["id", 2]]
+  [1m[35mIssue Load (0.3ms)[0m  SELECT  "issues".* FROM "issues" WHERE "issues"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mAssign Load (0.1ms)[0m  [1mSELECT  "assigns".* FROM "assigns" WHERE "assigns"."issue_id" = ? LIMIT 1[0m  [["issue_id", 1]]
+  [1m[35mIssue Load (0.4ms)[0m  SELECT  "issues".* FROM "issues" WHERE "issues"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mAssign Load (0.2ms)[0m  [1mSELECT  "assigns".* FROM "assigns" WHERE "assigns"."issue_id" = ? LIMIT 1[0m  [["issue_id", 1]]
+  [1m[35mProject Load (0.2ms)[0m  SELECT  "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mIssue Load (0.2ms)[0m  [1mSELECT "issues".* FROM "issues" WHERE "issues"."project_id" = ?[0m  [["project_id", 1]]

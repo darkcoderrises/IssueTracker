@@ -1,25 +1,24 @@
 <p id="notice"><%= notice %></p>
+<script>
+  document.getElementById("tag").setAttribute("class","active");
+</script>
+
+
+<%= link_to 'New Tag', new_tag_path %>
 
 <h1>Listing Tags</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
 
-  <tbody>
-    <% @tags.each do |tag| %>
-      <tr>
-        <td><%= link_to 'Show', tag %></td>
-        <td><%= link_to 'Edit', edit_tag_path(tag) %></td>
-        <td><%= link_to 'Destroy', tag, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
 
-<br>
-
-<%= link_to 'New Tag', new_tag_path %>
+<div style="border:1px solid black; padding:1em;">
+<% @tags.each do |tag| %>
+  <div>
+  <div >
+     <h3> <%= tag.id %>. <%= tag.tag %></h3>
+   </div>
+    <%= link_to 'Show', tag %>
+    <%= link_to 'Edit', edit_tag_path(tag) %>
+    <%= link_to 'Destroy', tag, method: :delete, data: { confirm: 'Are you sure?' } %>
+  </div>
+<% end %>
+</div>

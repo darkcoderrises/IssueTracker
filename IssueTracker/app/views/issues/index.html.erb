@@ -6,18 +6,19 @@
   document.getElementById("issue").setAttribute("class","active");
 </script>
 
-</script>
+
 
 <br /><br />
 
     <div style="border:1px solid black; padding:1em;">
     <% @issues.each do |issue| %>
-      <div style="border:1px solid black; margin:1px;">
+      <div>
       <div >
          <h3> <%= issue.heading %> (<%= Project.find(issue.project_id).name %>)</h3>
        </div>
          <p>
            <%= issue.description %>
+           <% if issue.dupl %>Marked Dup <% end %>
          </p>
         <%= link_to 'Show', issue %>
         <%= link_to 'Edit', edit_issue_path(issue) %>

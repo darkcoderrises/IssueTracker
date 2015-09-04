@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   get '/project/new' => 'project#new'
   post '/project/new' => 'project#create'
   get '/project/:id/edit' => 'project#edit'
+  post '/project/:id/edit' => 'project#update'
   get '/project/:id' => 'project#show', as: :id
   get 'project/:id/add' => 'project#add'
   get 'project/:id/remove/:rem' => 'project#remove'
@@ -25,6 +26,12 @@ Rails.application.routes.draw do
 
   get 'issue/:id/comment/new' => 'comments#new'
   post 'issue/:id/comment/new' => 'comments#create', as: :issue_id
+  get 'issue/:id/addtag' => 'tags#new'
+  post 'issue/:id/addtag' => 'tags#create'
+  get 'issue/:id/remtag/:tid' => 'issues#remtag'
+  get 'issue/:id/close' => 'issues#close'
+  get 'issue/:id/assign/:uid' => 'issues#assign'
+
   get 'issue/:id/add' => 'issues#voteadd'
   get 'issue/:id/rem' => 'issues#voterem'
 

@@ -1,4 +1,5 @@
 <%= form_for(@tag) do |f| %>
+  <%= f.text_field :tag %>
   <% if @tag.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@tag.errors.count, "error") %> prohibited this tag from being saved:</h2>

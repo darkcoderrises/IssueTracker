@@ -14,14 +14,21 @@
 
 <h3>Issues:-</h3>
 
-<div style = "border:1px solid black; margin:1px;">
-  Open Issues:
+<div style = "border:1px solid black; padding:1em;">
+  <b>Open Issues:</b>
   <% @issues.each do |issue| %>
     <% if issue.open==false %>
-    <div style = "border:1px solid black; margin:1px;">
+    <div style = "margin:10px;">
       <h4><%= issue.heading %></h4>
       <p><%= issue.description %></p>
       <p><%= issue.status %></p>
+      <p> <b>Tags:</b>
+        <% @tags = issue.tags %>
+        <% @tags.each do |tag| %>
+        <%= tag.tag %>,
+        <% end %>
+      </p>
+
       <b> Open </b>
       <%= link_to "Look Into It", issue_path(issue) %>
     </div>
@@ -29,13 +36,19 @@
   <% end %>
 
   <br>
-  Closed Issues:
+  <b>Closed Issues:</b>
   <% @issues.each do |issue| %>
     <% if issue.open %>
     <div style = "border:1px solid black; margin:1px;">
       <h4><%= issue.heading %></h4>
       <p><%= issue.description %></p>
       <p><%= issue.status %></p>
+      <p> <b>Tags:</b>
+        <% @tags = issue.tags %>
+        <% @tags.each do |tag| %>
+        <%= tag.tag %>,
+        <% end %>
+      </p>
       <b>Closed</b>
       <%= link_to "Look Into It", issue_path(issue) %>
     </div>
@@ -46,12 +59,14 @@
 
 <h3>People Working On it:-</h3>
 
-<div style = "border:1px solid black; margin:1px;">
+<div style = "border:1px solid black; padding:1em;">
   <% @workers.each do |w| %>
-    <div>
-      <h4><%= w.user.first_name %> <%= w.user.last_name %></h4>
+    <p>
+      <%= w.user.first_name %> <%= w.user.last_name %>
+      <% if @project.user_id == session[:user_id] && w.user.id != session[:user_id] %>
       <%= link_to "Remove", "/project/#{@project.id}/remove/#{w.user.id}" %>
-    </div>
+      <% end %>
+    </p>
   <% end %>
 
 </div>

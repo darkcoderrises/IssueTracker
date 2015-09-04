@@ -4,5 +4,5 @@ class Issue < ActiveRecord::Base
   has_many :votes
 
   has_one :assign
-  has_many :issues
+  has_many :tags
 end

@@ -1,3 +1,3 @@
 class Tag < ActiveRecord::Base
-  has_many :issues
+  belongs_to :issue
 end

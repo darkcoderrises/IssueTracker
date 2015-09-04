@@ -45,7 +45,7 @@ class ProjectController < ApplicationController
     @user = User.find(params[:rem])
 
     @working = @project.working.detect{|p| p.user_id == @user.id}
-    if @working
+    if @working && @project.user != @user
       @working.destroy
     end
 
@@ -65,8 +65,9 @@ class ProjectController < ApplicationController
   end
 
   def update
+    @project = Project.find(params[:id])
     respond_to do |format|
-      if @project.update(issue_params)
+      if @project.update(project_params)
         format.html { redirect_to @project, notice: 'Project was successfully updated.' }
         format.json { render :show, status: :ok, location: @project }
       else

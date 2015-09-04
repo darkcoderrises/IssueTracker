@@ -10,6 +10,69 @@
 <% end %>
 
 <%= link_to 'New Comment', issue_id_path(@issue) %>
+<br>
+<% if ! @issue.open %>
+<%= link_to 'Close This Issue', "/issue/#{@issue.id}/close" %>
+<% else %>
+Closed Issue
+<% end %>
 <h2><%= @issue.heading %></h2>
+  <% if @issue.dupl %>Marked Duplicate <% end %>
 <p>Votes:<%= @issue.votes.count %></p>
 <p><%= @issue.description %></p>
+
+<p> <b>Tags:</b>
+  <% @tags = @issue.tags %>
+  <% @tags.each do |tag| %>
+  <%= tag.tag %>(<%= link_to "Remove", "/issue/#{@issue.id}/remtag/#{tag.id}" %>),
+  <% end %>
+  <br>
+  <%= link_to "Add Tags", "/issue/#{@issue.id}/addtag" %>
+</p>
+
+<br>
+<%if @issue.assign %>
+<h5> Assigned To: <%= @issue.assign.user.first_name %> <%= @issue.assign.user.last_name %> </h5>
+<% end %>
+<h3> Comments </h3>
+<% @comments = @issue.comments %>
+    <div style="border:1px solid black; padding:1em;">
+<% @comments.each do |comment| %>
+<div style="margin:10px; ">
+
+     <%= comment.comment %>
+
+   <p>
+   <b>Mentions:</b>
+   <% @mentions = comment.mentions %>
+   <% @mentions.each do |mention| %>
+   <% if mention.user %>
+   <%= mention.user.first_name %>
+   <%= mention.user.last_name %>
+   <% end %>
+   <% end %>
+   <br>
+   <%= link_to 'Show', comment %>
+   <%= link_to 'Edit', edit_comment_path(comment) %>
+   <%= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' } %>
+     </p>
+</div>
+<% end %>
+</div>
+<br>
+<% @project = @issue.project %>
+<% @workers = @issue.project.working %>
+<div style = "border:1px solid black; padding:1em;">
+  <% @workers.each do |w| %>
+    <p>
+      <%= w.user.first_name %> <%= w.user.last_name %>
+      <% if @project.user_id == session[:user_id] && w.user.id != session[:user_id] %>
+      <%= link_to "Remove", "/project/#{@project.id}/remove/#{w.user.id}" %>
+      <% end %>
+      <% if @project.user_id == session[:user_id] %>
+      <%= link_to "Assign", "/issue/#{@issue.id}/assign/#{w.user.id}" %>
+      <% end %>
+    </p>
+  <% end %>
+
+</div>

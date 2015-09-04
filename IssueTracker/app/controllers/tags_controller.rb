@@ -25,14 +25,23 @@ class TagsController < ApplicationController
   # POST /tags.json
   def create
     @tag = Tag.new(tag_params)
+    @issue = Issue.find(params[:id])
+    @issue.tags << @tag
 
-    respond_to do |format|
-      if @tag.save
-        format.html { redirect_to @tag, notice: 'Tag was successfully created.' }
-        format.json { render :show, status: :created, location: @tag }
-      else
-        format.html { render :new }
-        format.json { render json: @tag.errors, status: :unprocessable_entity }
+    @project = @issue.project
+
+    if !@project.private || @project.user.id == session[:user_id]
+      @tag.destroy
+
+    else
+      respond_to do |format|
+        if @tag.save
+          format.html { redirect_to @tag, notice: 'Tag was successfully created.' }
+          format.json { render :show, status: :created, location: @tag }
+        else
+          format.html { render :new }
+          format.json { render json: @tag.errors, status: :unprocessable_entity }
+        end
       end
     end
   end
@@ -69,6 +78,6 @@ class TagsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def tag_params
-      params[:tag]
+      params.require(:tag).permit(:tag)
     end
 end
