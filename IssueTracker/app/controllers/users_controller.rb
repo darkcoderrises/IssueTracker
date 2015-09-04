@@ -3,6 +3,13 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
+  def index
+    @user = User.find(session[:user_id])
+    @projects = @user.projects
+    @invites = @user.invite
+    @workings = @user.working
+  end
+
   def create
     @user = User.new(user_param)
     if @user.save

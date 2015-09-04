@@ -15,15 +15,48 @@ class ProjectController < ApplicationController
   end
 
   def show
-      @project = Project.find(params[:id])
-      @user = User.find(@project.user_id)
-      @issues = @project.issues
+    @project = Project.find(params[:id])
+
+    puts @project.working.detect{|p| p.id == session[:user_id] }
+    if check(@project.id) == 0
+      redirect_to '/'
+    end
+
+    @user = User.find(@project.user_id)
+    @issues = @project.issues
+    @workers = @project.working
+  end
+
+  def add
+    @user = User.find(session[:user_id])
+    @project = Project.find(params[:id])
+    @invite = @user.invite.detect{|i| i.project_id == @project.id}
+
+    if @invite
+      @invite.destroy
+      Working.create(user_id: @user.id, project_id: @project.id)
+    else
+      redirect_to "/"
+    end
+  end
+
+  def remove
+    @project = Project.find(params[:id])
+    @user = User.find(params[:rem])
+
+    @working = @project.working.detect{|p| p.user_id == @user.id}
+    if @working
+      @working.destroy
+    end
+
+    redirect_to "/project/#{@project.id}"
   end
 
   def create
     @project = Project.new(project_params)
     @user = User.find(session[:user_id])
     @user.projects << @project
+    Working.create(user_id: @user.id, project_id: @project.id)
     if @project.save
       redirect_to '/'
     else
@@ -55,6 +88,20 @@ class ProjectController < ApplicationController
 
   private
   def project_params
-    params.require(:project).permit(:name, :description)
+    params.require(:project).permit(:name, :description, :private)
+  end
+
+  def check(x)
+    @project = Project.find(x)
+
+    if @project.private == 0
+      return 1
+    end
+
+    if @project.working.detect{|p| p.user_id == session[:user_id] }
+      return 1
+    else
+      return 0
+    end
   end
 end

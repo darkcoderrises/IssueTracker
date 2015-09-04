@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
+  resources :tags
+  resources :invites
   resources :comments
   resources :issues
-  root 'project#index'
+  root 'users#index'
 
   get 'signup' => 'users#new'
   resources:users
@@ -15,13 +17,19 @@ Rails.application.routes.draw do
   post '/project/new' => 'project#create'
   get '/project/:id/edit' => 'project#edit'
   get '/project/:id' => 'project#show', as: :id
+  get 'project/:id/add' => 'project#add'
+  get 'project/:id/remove/:rem' => 'project#remove'
 
   get '/project/:id/issue/new' => 'issues#new'
   post '/project/:id/issue/new' => 'issues#create', as: :project_id
 
   get 'issue/:id/comment/new' => 'comments#new'
   post 'issue/:id/comment/new' => 'comments#create', as: :issue_id
+  get 'issue/:id/add' => 'issues#voteadd'
+  get 'issue/:id/rem' => 'issues#voterem'
 
+  post 'invites/new' => 'invites#create'
+  get '/invites/:id' => 'invites#add', as: :invite_id
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -1,0 +1,49 @@
+<div class="jumbotron">
+<h1><%= @user.first_name %> <%= @user.last_name %></h1>
+</div>
+<%= link_to "New Project", project_new_path() %>
+
+<script>
+  document.getElementById("home").setAttribute("class","active");
+</script>
+
+<h2>Your Invites</h2>
+
+<div style="border:1px solid black; padding:1em">
+<% @invites.each do |i| %>
+  <div>
+      <h4>
+        <%= i.project.name %>
+      </h4>
+      <%= link_to "Accept", "/project/#{i.project_id}/add" %>|
+    </div>
+<% end %>
+</div>
+
+<h2>Your Projects</h2>
+
+<div style="border:1px solid black; padding:1em">
+<% @projects.each do |p| %>
+  <div>
+      <h3>
+        <%= p.name %>
+      </h3>
+    <%= p.description %><br>
+    <%= link_to "See More", id_path(p) %>
+  </div>
+<% end %>
+</div>
+
+<h2>Projects Working On</h2>
+
+<div style="border:1px solid black; padding:1em">
+<% @workings.each do |p| %>
+  <div>
+      <h3>
+        <%= p.project.name %>
+      </h3>
+    <%= p.project.description %><br>
+    <%= link_to "See More", id_path(p.project) %>
+  </div>
+<% end %>
+</div>

@@ -3,6 +3,7 @@
   <%= f.text_area :description %>
   <%= f.text_field :status %>
   <%= f.check_box :open %>
+  <%= f.check_box :dupl %>
   <% if @issue.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@issue.errors.count, "error") %> prohibited this issue from being saved:</h2>

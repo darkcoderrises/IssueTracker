@@ -34,6 +34,15 @@ class CommentsController < ApplicationController
     @issue.comments << @comment
     respond_to do |format|
       if @comment.save
+        @mentions = @comment.comment.split("MENTION:").last
+        @mentions = @mentions.gsub(/\s+/, "")
+        @mentions = @mentions.split(",")
+
+        @mentions.each do |mention|
+          Mention.create(user_id: mention, comment_id: @comment.id)
+        end
+
+        @comment.update(comment: @comment.comment.split("MENTION:").first)
         format.html { redirect_to @comment, notice: 'Comment was successfully created.' }
         format.json { render :show, status: :created, location: @comment }
       else

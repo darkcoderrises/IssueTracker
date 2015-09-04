@@ -7,9 +7,10 @@
 <%= @project.description %><br>
 
 <%= link_to 'Edit', "/project/"+@project.id.to_s+"/edit" %> |
-<%= link_to 'Back', project_path %>
+<%= link_to 'Back', project_path %> |
 
-<%= link_to "New Issue", project_id_path(@project) %>
+<%= link_to "New Issue", project_id_path(@project) %> |
+<%= link_to "New Invite", new_invite_path() %>
 
 <h3>Issues:-</h3>
 
@@ -40,4 +41,17 @@
     </div>
     <% end %>
   <% end %>
+</div>
+<br>
+
+<h3>People Working On it:-</h3>
+
+<div style = "border:1px solid black; margin:1px;">
+  <% @workers.each do |w| %>
+    <div>
+      <h4><%= w.user.first_name %> <%= w.user.last_name %></h4>
+      <%= link_to "Remove", "/project/#{@project.id}/remove/#{w.user.id}" %>
+    </div>
+  <% end %>
+
 </div>

@@ -5,7 +5,8 @@ class CreateIssues < ActiveRecord::Migration
       t.string :description
       t.string :status
       t.boolean :open
-      
+      t.boolean :dupl
+
       t.integer :project_id
       t.timestamps null: false
     end

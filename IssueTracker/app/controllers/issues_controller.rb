@@ -21,6 +21,29 @@ class IssuesController < ApplicationController
   def edit
   end
 
+  def voteadd
+    @issue = Issue.find(params[:id])
+    @user = User.find(session[:user_id])
+    @project = @issue.project
+
+    if @project.working.detect{|p| p.user_id == @user.id} && !@user.votes.detect{|v| v.issue_id == @issue.id}
+      Vote.create(user_id: session[:user_id], issue_id:params[:id])
+    end
+
+    redirect_to "/issues/#{@issue.id}"
+  end
+
+  def voterem
+    @issue = Issue.find(params[:id])
+    @user = User.find(session[:user_id])
+
+    @vote = @user.votes.detect{|v| v.issue_id == @issue.id}
+    if @vote
+      @vote.destroy
+    end
+    redirect_to "/issues/#{@issue.id}"
+  end
+
   # POST /issues
   # POST /issues.json
   def create

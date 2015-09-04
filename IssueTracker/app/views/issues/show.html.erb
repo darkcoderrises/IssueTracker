@@ -3,8 +3,13 @@
 <%= link_to 'Edit', edit_issue_path(@issue) %> |
 <%= link_to 'Back', id_path(Project.find(@issue.project_id)) %>
 <%= link_to 'Destroy', @issue, method: :delete, data: { confirm: 'Are you sure?' } %>
-
+<% if !@issue.votes.detect{|v| v.user_id == session[:user_id]} %>
+<%= link_to 'Vote', "/issue/#{@issue.id}/add" %>
+<% else %>
+<%= link_to 'Unvote', "/issue/#{@issue.id}/rem" %>
+<% end %>
 
 <%= link_to 'New Comment', issue_id_path(@issue) %>
 <h2><%= @issue.heading %></h2>
+<p>Votes:<%= @issue.votes.count %></p>
 <p><%= @issue.description %></p>
