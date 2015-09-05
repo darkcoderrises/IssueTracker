@@ -12,20 +12,45 @@
 <%= link_to "New Issue", project_id_path(@project) %> |
 <%= link_to "New Invite", new_invite_path() %>
 
+
+
 <h3>Issues:-</h3>
 
-<div style = "border:1px solid black; padding:1em;">
+Search for Title/description:<input type="text" id="searchbox" title="Search for Title/description"/><br>
+Search for Person:<input type="text" id="personbox" title="Search for Person"/><br>
+Search for Tags:<input type="text" id="tagbox" title="Search for Tags"/><br>
+
+<button onclick="search()">Submit</button>
+
+<div id="container" style = "border:1px solid black; padding:1em;">
   <b>Open Issues:</b>
   <% @issues.each do |issue| %>
     <% if issue.open==false %>
-    <div style = "margin:10px;">
-      <h4><%= issue.heading %></h4>
-      <p><%= issue.description %></p>
+    <div style = "margin:10px;" class="issue" id="<%= issue.id %>">
+      <h4 class="Title"><%= issue.heading %></h4>
+      <p class="Description"><%= issue.description %></p>
       <p><%= issue.status %></p>
-      <p> <b>Tags:</b>
+      <p><b>Tags:</b>
         <% @tags = issue.tags %>
         <% @tags.each do |tag| %>
         <%= tag.tag %>,
+        <% end %>
+      </p>
+      <p><b>Assigned To:</b>
+        <% if issue.assign %>
+        <%= issue.assign.user.first_name %> <%= issue.assign.user.last_name %>
+        <% end %>
+      </p>
+      <p><b>Mentions:</b>
+        <% @comments = issue.comments %>
+        <% @comments.each do |c| %>
+        <% @mentions = c.mentions %>
+        <% @mentions.each do |m| %>
+        <% if m.user %>
+        <% @user = m.user %>
+        <%= @user.first_name %> <%= @user.last_name %>,
+        <% end %>
+        <% end %>
         <% end %>
       </p>
 
@@ -39,7 +64,7 @@
   <b>Closed Issues:</b>
   <% @issues.each do |issue| %>
     <% if issue.open %>
-    <div style = "border:1px solid black; margin:1px;">
+    <div style = "margin:10px;" class="issue">
       <h4><%= issue.heading %></h4>
       <p><%= issue.description %></p>
       <p><%= issue.status %></p>
@@ -70,3 +95,137 @@
   <% end %>
 
 </div>
+
+<script>
+Array.prototype.clean = function(deleteValue) {
+  for (var i = 0; i < this.length; i++) {
+    if (this[i] == deleteValue) {
+      this.splice(i, 1);
+      i--;
+    }
+  }
+  return this;
+};
+
+window.onload = function()
+{
+  issues = document.getElementsByClassName("issue");
+  Issues = [];
+
+    for (var i = 0; i<issues.length ; i++)
+    {
+        var issue = {
+        content: issues[i].innerHTML,
+        title: issues[i].childNodes[1].innerHTML,
+        description: issues[i].childNodes[3].innerHTML,
+        tags: issues[i].childNodes[7].childNodes[1].nodeValue.replace(/[\n\r]+/g, '').replace(/ /g,'').split(",").clean(""),
+        assign: issues[i].childNodes[9].childNodes[1].nodeValue.replace(/[\n\r]+/g, '').replace(/ /g,''),
+        mentions: issues[i].childNodes[11].childNodes[1].nodeValue.replace(/[\n\r]+/g, '').replace(/ /g,'').split(",").clean(""),
+      }
+      Issues.push(issue);
+    }
+
+}
+
+function superbag(sup, sub) {
+    sup.sort();
+    sub.sort();
+    var i, j;
+    for (i=0,j=0; i<sup.length && j<sub.length;) {
+        if (sup[i] < sub[j]) {
+            ++i;
+        } else if (sup[i] == sub[j]) {
+            ++i; ++j;
+        } else {
+            // sub[j] not in sup, so sub not subbag
+            return false;
+        }
+    }
+    // make sure there are no elements left in sub
+    return j == sub.length;
+}
+
+function search()
+{
+  var container = document.getElementById("container");
+
+  var search = document.getElementById("searchbox").value;
+  document.getElementById("searchbox").value=""
+
+  var person = document.getElementById("personbox").value.replace(/ /g,'');
+  document.getElementById("personbox").value=""
+
+  var tags = document.getElementById("tagbox").value;
+  document.getElementById("tagbox").value=""
+
+  console.log(Issues)
+
+  container.innerHTML = "";
+
+  if(search)
+  {
+    console.log(search);
+    for(var i=0; i<Issues.length; i++)
+    {
+      if (Issues[i].title.indexOf(search)>-1 || Issues[i].description.indexOf(search)>-1)
+      {
+        container.innerHTML += Issues[i].content
+      }
+    }
+  }
+
+  if(person)
+  {
+    console.log(person)
+    for(var i=0; i<Issues.length; i++)
+    {
+      var flag =0 ;
+      if (Issues[i].assign.indexOf(person)>-1)
+      {
+        container.innerHTML += Issues[i].content
+        flag=1;
+      }
+      if(flag==0){
+        for (var j=0; j<Issues[i].mentions.length; j++)
+        {
+          if(Issues[i].mentions[j].indexOf(person)>-1)
+          {
+            container.innerHTML += Issues[i].content
+            flag=1;
+          }
+          if(flag)break;
+        }
+      }
+    }
+  }
+
+  if(tags)
+  {
+    tags = tags.replace(/ /g,'').split(",").clean("");
+    ids = []
+    for(var tagid=0; tagid<tags.length; tagid++)
+    {
+      tag = tags[tagid];
+      tag = tag.split("and").clean("");
+      for(var i=0;i<Issues.length;i++)
+      {
+        var issue = Issues[i];
+        if (superbag(issue.tags,tag))
+        {
+          ids.push(i);
+        }
+      }
+    }
+    uniqueArray = ids.filter(function(item, pos) {
+      return ids.indexOf(item) == pos;
+    })
+    for(var i=0; i<uniqueArray.length; i++)
+    {
+      var issue = Issues[uniqueArray[i]];
+      container.innerHTML+= issue.content
+    }
+  }
+
+
+}
+</script>
