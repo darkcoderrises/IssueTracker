@@ -29,6 +29,8 @@ class IssuesController < ApplicationController
       @issue.assign.destroy
     end
     Assign.create(user_id: params[:uid], issue_id: params[:id])
+    Notification.create(user_id: params[:uid], notify: "You have been assigned a issue",link:issue_path(params[:id]))
+
     redirect_to "/issues/#{@issue.id}"
   end
 
@@ -86,6 +88,10 @@ class IssuesController < ApplicationController
       @project = Project.find(params[:id])
       @project.issues << @issue
       if @issue.save
+        @project.working.each do |w|
+          @user = w.user
+          Notification.create(user_id: @user.id, notify: "There is a new issue",link:issue_path(@issue.id))
+        end
         format.html { redirect_to @issue, notice: 'Issue was successfully created.' }
 
         format.json { render :show, status: :created, location: @issue }

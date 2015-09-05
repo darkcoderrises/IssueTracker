@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150904111250) do
+ActiveRecord::Schema.define(version: 20150905163748) do
 
   create_table "assigns", force: :cascade do |t|
     t.integer  "user_id"
@@ -48,6 +48,14 @@ ActiveRecord::Schema.define(version: 20150904111250) do
   create_table "mentions", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "comment_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "notifications", force: :cascade do |t|
+    t.string   "notify"
+    t.string   "link"
+    t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

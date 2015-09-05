@@ -1,9 +1,11 @@
 <%= form_for(@issue) do |f| %>
-  <%= f.text_field :heading %>
-  <%= f.text_area :description %>
-  <%= f.text_field :status %>
-  <%= f.check_box :open %>
-  <%= f.check_box :dupl %>
+<table>
+  <tr><td>Heading</td><td><%= f.text_field :heading %></td></tr>
+  <tr><td>Description:</td><td><%= f.text_area :description %></td></tr>
+  <tr><td>Status:</td><td><%= f.text_field :status %></td></tr>
+  <tr><td>Open/Closed:</td><td><%= f.check_box :open %></td></tr>
+  <tr><td>Duplicate:</td><td><%= f.check_box :dupl %></td></tr>
+</table>
   <% if @issue.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@issue.errors.count, "error") %> prohibited this issue from being saved:</h2>

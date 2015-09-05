@@ -38,8 +38,10 @@ class CommentsController < ApplicationController
         @mentions = @mentions.gsub(/\s+/, "")
         @mentions = @mentions.split(",")
 
+        Notification.create(user_id: mention, notify: "There is a new comment.", link:comment_path(@comment.id))
         @mentions.each do |mention|
           Mention.create(user_id: mention, comment_id: @comment.id)
+          Notification.create(user_id: mention, notify: "You have been mentioned in a issue", link:comment_path(@comment.id))
         end
 
         @comment.update(comment: @comment.comment.split("MENTION:").first)

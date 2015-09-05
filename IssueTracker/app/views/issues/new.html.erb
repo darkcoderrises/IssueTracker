@@ -2,10 +2,12 @@
 
 
 <%= form_for(:issue) do |f| %>
-  <%= f.text_field :heading, :placeholder => "Name" %>
-  <%= f.text_field :description, :placeholder => "Description" %>
-  <%= f.text_field :status, :placeholder => "Status" %>
-  <%= f.check_box :open, :placeholder => "Open/Closed"%>
-  <%= f.check_box :dupl, :placeholder => "Duplicate"%>
+<table>
+  <tr><td>Heading</td><td><%= f.text_field :heading %></td></tr>
+  <tr><td>Description:</td><td><%= f.text_area :description %></td></tr>
+  <tr><td>Status:</td><td><%= f.text_field :status %></td></tr>
+  <tr><td>Open/Closed:</td><td><%= f.check_box :open %></td></tr>
+  <tr><td>Duplicate:</td><td><%= f.check_box :dupl %></td></tr>
+</table>
   <%= f.submit "Create New", class: "btn-submit" %>
 <% end %>

@@ -9,4 +9,5 @@ class User < ActiveRecord::Base
   has_many :votes
 
   has_many :assigns
+  has_many :notifications
 end

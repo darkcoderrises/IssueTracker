@@ -5,11 +5,13 @@
     <h1>Sign up</h1>
 
     <%= form_for(@user) do |f| %>
-      <%= f.text_field :first_name, :placeholder => "First name" %> <br />
-      <%= f.text_field :last_name, :placeholder => "Last name" %> <br />
-      <%= f.email_field :email, :placeholder => "Email" %> <br />
-      <%= f.password_field :password, :placeholder => "Password" %> <br />
-      <%= f.submit "Create an account", class: "btn-submit" %> <br />
+    <table>
+      <tr><td>First Name:</td><td><%= f.text_field :first_name, :placeholder => "First name" %> </td></tr>
+      <tr><td>Last Name:</td><td><%= f.text_field :last_name, :placeholder => "Last name" %> </td></tr>
+      <tr><td>Email:</td><td><%= f.email_field :email, :placeholder => "Email" %> </td></tr>
+      <tr><td>Password:</td><td><%= f.password_field :password, :placeholder => "Password" %> </td></tr>
+      <tr><td><%= f.submit "Create an account", class: "btn-submit" %> </td></tr>
+    </table>
     <% end %>
 
 
