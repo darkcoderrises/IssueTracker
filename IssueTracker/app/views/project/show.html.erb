@@ -68,10 +68,27 @@ Search for Tags:<input type="text" id="tagbox" title="Search for Tags"/><br>
       <h4><%= issue.heading %></h4>
       <p><%= issue.description %></p>
       <p><%= issue.status %></p>
-      <p> <b>Tags:</b>
+      <p><b>Tags:</b>
         <% @tags = issue.tags %>
         <% @tags.each do |tag| %>
         <%= tag.tag %>,
+        <% end %>
+      </p>
+      <p><b>Assigned To:</b>
+        <% if issue.assign %>
+        <%= issue.assign.user.first_name %> <%= issue.assign.user.last_name %>
+        <% end %>
+      </p>
+      <p><b>Mentions:</b>
+        <% @comments = issue.comments %>
+        <% @comments.each do |c| %>
+        <% @mentions = c.mentions %>
+        <% @mentions.each do |m| %>
+        <% if m.user %>
+        <% @user = m.user %>
+        <%= @user.first_name %> <%= @user.last_name %>,
+        <% end %>
+        <% end %>
         <% end %>
       </p>
       <b>Closed</b>
@@ -107,23 +124,26 @@ Array.prototype.clean = function(deleteValue) {
   return this;
 };
 
+var issues;
+var Issues;
+
 window.onload = function()
 {
   issues = document.getElementsByClassName("issue");
   Issues = [];
 
-    for (var i = 0; i<issues.length ; i++)
-    {
-        var issue = {
-        content: issues[i].innerHTML,
-        title: issues[i].childNodes[1].innerHTML,
-        description: issues[i].childNodes[3].innerHTML,
-        tags: issues[i].childNodes[7].childNodes[1].nodeValue.replace(/[\n\r]+/g, '').replace(/ /g,'').split(",").clean(""),
-        assign: issues[i].childNodes[9].childNodes[1].nodeValue.replace(/[\n\r]+/g, '').replace(/ /g,''),
-        mentions: issues[i].childNodes[11].childNodes[1].nodeValue.replace(/[\n\r]+/g, '').replace(/ /g,'').split(",").clean(""),
+  for (var i = 0; i<issues.length ; i++)
+  {
+      var issue = {
+      content: issues[i].innerHTML,
+      title: issues[i].childNodes[1].innerHTML,
+      description: issues[i].childNodes[3].innerHTML,
+      tags: issues[i].childNodes[7].childNodes[1].nodeValue.replace(/[\n\r]+/g, '').replace(/ /g,'').split(",").clean(""),
+      assign: issues[i].childNodes[9].childNodes[1].nodeValue.replace(/[\n\r]+/g, '').replace(/ /g,''),
+      mentions: issues[i].childNodes[11].childNodes[1].nodeValue.replace(/[\n\r]+/g, '').replace(/ /g,'').split(",").clean(""),
       }
       Issues.push(issue);
-    }
+  }
 
 }
 
