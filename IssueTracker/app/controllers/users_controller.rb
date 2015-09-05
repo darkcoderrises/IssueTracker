@@ -4,6 +4,9 @@ class UsersController < ApplicationController
   end
 
   def index
+    if (!session[:user_id])
+      redirect_to '/login'
+    end
     @user = User.find(session[:user_id])
     @projects = @user.projects
     @invites = @user.invite
